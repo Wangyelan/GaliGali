@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="css/all.css" rel="stylesheet"  media="all" type="text/css" />
+    <title>galigali非遗文化站</title>
+    <style>
+        .login_box {
+            width: 400px;
+            height: 200px;
+            background-color: #fff;
+            margin: auto;
+            margin-top: 50px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .input_box {
+            width: 300px;
+            height: 30px;
+            width: 300px;
+            height: 40px;
+            padding-left: 10px;
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+        .button_box {
+            width: 300px;
+            height: 35px;
+            width: 300px;
+            height: 40px;
+            margin-top: 20px;
+            margin-left: 50px;
+            border-radius: 5px;
+            background-color: #c53333;
+            cursor: pointer;
+            color: #fff;
+        }
+        h2 { 
+            text-align:center;
+            color:#F00; padding:10px;
+            padding-bottom:20px; 
+            margin-bottom:20px; 
+            border-bottom:#999999 solid 1px
+        }
+        h3 {
+            text-align:center;
+            color:rgb(255, 255, 255); padding:10px;
+            padding-bottom:20px; 
+            margin-bottom:20px; 
+            border-bottom:#999999 solid 1px
+        }
+        li {
+            font-size: larger;
+            color:rgb(255, 255, 255); padding:10px;
+            padding-bottom:20px; 
+            margin-bottom:20px; 
+            margin-left: 20px;
+            border-bottom:#999999 solid 1px
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="c-banner">
+            <div class="banner">
+                <ul>
+                    <li><img src="images/201133058101657.jpg"></li>
+                    <li><img src="images/banner2.jpg"></li>
+                    
+                </ul>
+            </div>
+        
+            <div class="jumpBtn">
+                <ul>
+                    <li jumpImg="0"></li>
+                    <li jumpImg="1"></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <div class="menu">
+          <ul class="center">
+            <li><a href="index.html">主页</a></li>
+            <li><a href="photo.html">相册</a></li>
+            <li><a href="news.html">文章</a></li>
+            <li><a href="about.html">网站信息</a></li>
+            <li><a href="upload.html">文章投稿</a></li>
+          </ul>
+          <p class="clear"></p>
+        </div>
+    <div class="content">
+        <div class="content pad">  
+          <h1 class="title">注意请将提交内容改为不含中文</h1>
+        </div>
+    </div>
+    <div>
+        <h2>以下为文字提交处</h2>
+    </div>
+    <div class="login_box" id="fileUploadDiv">
+        <!--表单提交记得申明enctype为multipart/form-data 否则后面会报错-->
+                <form id="myform" action="/file/uploadFile" enctype="multipart/form-data"
+                      method="post">
+                    <input class="input_box" type="text" id="name" name="name" placeholder="标题"/><br/>
+                    <input class="input_box" type="text" name="content" id="content" placeholder="内容"/><br/>
+                    <!--            <input type="submit" id="submit" value="提交"/>-->
+                    <button class="button_box" type="button" onclick="uploadFile1()">上传</button>
+                </form>
+            </div>
+            <script type="text/javascript">
+        
+            function uploadFile1() {
+                var name = document.getElementById("name").value;
+                var content = document.getElementById("content").value;
+            
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xhttp.open("GET", "http://47.94.233.112:8801/file/uploadFile?name="+name+"&content="+content);
+                xhttp.send();
+            }
+        </script>
+    <div class="content">
+        <div class="bar">
+          <h2>以下为用户提交的文章（英文）</h2>
+          <h3>格式为：编号在前内容在后</h3>
+        </div>
+        <ul class="pad" id="content_list">
+
+        </ul>
+        
+        <script type="text/javascript">
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var str=this.responseText;
+                    //删除原有表单
+                    var ul = document.getElementById("content_list");
+                    for(let i = 0;i < ul.childNodes.length; i++){
+                        ul.removeChild(ul.childNodes[i]);
+                    }
+
+                    var left=0;
+                    var right=0;
+                    var content_count=0;
+                    for(let i=0;i<str.length;i++){
+                        //寻找切割片段
+                        if(str[i]==':'){
+                            left=i+1;
+                            right=left+1;
+                            while(true){
+                                if(str[right+1]=='"')
+                                    break;
+                                right++;
+                            }
+                            //至此获得切割的左右端
+                            var tmp=str.slice(left+1,right+1);
+                            content_count++;//记录这是第几个投稿内容
+                            //向content_List里添加li标签
+                            var node = document.createElement("li");
+                            var textnode = document.createTextNode("用户投稿"+content_count+":"+tmp);
+                            node.appendChild(textnode);
+                            document.getElementById("content_list").appendChild(node);
+
+                            i=right+1;
+                        }
+                    }
+                }
+            };
+            xhttp.open("GET", "http://47.94.233.112:8801/file/showReady");
+            xhttp.send();
+        </script>
+
+        <div class="clear"></div>
+      </div>
+    <div class="end">
+        <p>www.galigali.com</p>
+    </div>
+</body>
+</html>

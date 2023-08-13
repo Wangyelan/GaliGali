@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="css/all.css" rel="stylesheet"  media="all" type="text/css" />
+<title>galigali非遗文化站</title>
+</head>
+<body>
+<div class="banner"><img src="images/201133058101657.jpg" width="100%" /></div>
+<div class="menu">
+  <ul class="center">
+    <li><a href="index.html">主页</a></li>
+    <li><a href="photo.html">相册</a></li>
+    <li><a href="news.html">文章</a></li>
+    <li><a href="about.html">网站信息</a></li>
+    <li><a href="upload.html">文章投稿</a></li>
+  </ul>
+  <p class="clear"></p>
+</div>
+<div class="content">
+  <div class="bar">
+    <h2>传统艺术</h2>
+  </div>
+  <div class="txt">在中国古代，有很多巧夺天工，精妙绝伦的艺术品，传承来的艺术品，都有很高的艺术水准，体现来中国劳动人民的智慧与中国古代工匠精神。这是中华民族的宝贵财富，也是全人类的宝贵财富。中国传统艺术以其浓郁的乡土气息、淳厚的艺术内涵和生动的历史痕迹，越来越受到世界人民的喜爱和欣赏，成为人类共同的文化“大餐”。</div>
+  <div class="tub">
+    <ul>
+      <li><a href="javascript:void()" ><img src="images/a1.jpg" /></a></li>
+      <li><a href="javascript:void()" ><img src="images/a2.jpg" /></a></li>
+      <li><a href="javascript:void()" ><img src="images/a3.jpg" /></a></li>
+      <li><a href="javascript:void()" ><img src="images/a4.jpg" /></a></li>
+      <li><a href="javascript:void()" ><img src="images/a5.jpg" /></a></li>
+      <li><a href="javascript:void()" ><img src="images/a6.jpg" /></a></li>
+      <li><a href="javascript:void()" ><img src="images/a7.jpg" /></a></li>
+      <li><a href="javascript:void()" ><img src="images/a8.jpg" /></a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="end">
+  <p>www.galigali.com</p>
+</div>
+<div class="photo" style="display:none">
+  <div class="img">
+    <div><img src="images/b1.jpg" id="img"></div>
+  </div>
+  <span class="close">关闭</span> </div>
+<div class="mask" style="display:none"></div>
+<script src="js/jquery.min.js"></script>
+<script>
+ $(".tub li a img").click(function(){
+  var imgsrc = $(this).attr("src")
+  $("#img").attr("src",imgsrc)
+  $(".photo").show()
+  $(".mask").show()
+});
+
+$(".close").click(function(){
+  $(".photo").hide()
+  $(".mask").hide()
+});
+
+</script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>galigali二级管理系统页面</title>
+    <style>
+        body {
+            background-color: rgb(252, 249, 255);
+
+        }
+
+        h1 {
+            text-align: left;
+            padding-top: 10px;
+            color: rgba(130, 38, 250, 0.308);
+            margin-left: 50px;
+        }
+
+        li {
+            text-align: left;
+            padding-top: 10px;
+            color: rgba(130, 38, 250, 0.308);
+            margin-left: 100px;
+        }
+        .login_box {
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            margin: auto;
+            margin-top: 150px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .title {
+            text-align: center;
+            font-size: 28px;
+            color: #000;
+            margin-top: 80px;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            font-family: sans-serif;
+        }
+        .input_box {
+            width: 300px;
+            height: 30px;
+            width: 300px;
+            height: 40px;
+            padding-left: 10px;
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+        .button_box {
+            width: 300px;
+            height: 35px;
+            width: 300px;
+            height: 40px;
+            margin-top: 20px;
+            margin-left: 50px;
+            border-radius: 5px;
+            background-color: #64a9d9;
+            cursor: pointer;
+            color: #fff;
+        }
+        .logo_box {
+            position: absolute;
+            background-color: #fff;
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+            top: 100px;
+            left: 46%;
+            border: solid 5px #A68364;
+            text-align: center;
+        }
+        .logo_img {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>以下为已有的用户表单：</h1>
+    <ul id="myList">
+        
+    </ul>
+    
+
+    <script>
+        //发送AJAX请求获取表单list
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                //至此获得this.respenseText为用户名的表单
+                var list_usr=this.responseText;
+
+                //删除原有表单
+                var ul = document.getElementById("myList");
+                for(let i = 0;i < ul.childNodes.length; i++){
+                    ul.removeChild(ul.childNodes[i]);
+                }
+
+                var left=0;
+                var right=0;
+                var count=1;
+                for(let i=0;i<list_usr.length;i++){
+                    //寻找切割片段
+                    if(list_usr[i]==' '||list_usr[i]=='['||list_usr[i]==']')
+                        continue;
+                    if(list_usr[i]=='"'){
+                        left=i;
+                        right=i+1;
+                        while(true){
+                            if(list_usr[right+1]=='"')
+                                break;
+                            right++;
+                        }
+                        //至此获得切割的左右端
+                        var tmp=list_usr.slice(left+1,right+1);
+                        //向myList里添加li标签
+                        var node = document.createElement("li");
+                        var textnode = document.createTextNode(count+". "+tmp);
+                        node.appendChild(textnode);
+                        document.getElementById("myList").appendChild(node);
+
+                        count++;
+                        i=right+1;
+                    }
+                }
+            }
+        };
+        xhttp.open("GET", "http://47.94.233.112:9000/user/showtable");
+        xhttp.send();
+
+    </script>
+
+    <!-- 以下为封号功能 -->
+    <div class="ban_box">
+		<h1>账户封禁</h1>
+		<input class="input_box" type="text" placeholder="用户名" id="username" name="username">
+		<input class="button_box" type="button" value="封禁" id="ban">
+	</div>
+    <div class="ban_box">
+        <h1>内容审核</h1>
+        <input class="button_box" type="button" value="审核" id="check">
+    </div>
+
+    <script>
+        document.getElementById("ban").onclick=function(){
+            // 1.获取账号(用户名)
+            var usr=document.getElementById("username").value;
+            // 2.AJAX发送请求
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                    //至此获得this.respenseText为"封号成功"或其他
+                }
+            };
+            xhttp.open("GET", "http://47.94.233.112:9000/user/block?username="+usr);
+            xhttp.send();
+        }
+        document.getElementById("check").onclick=function(){
+            window.location.href="http://47.94.233.112/assess.html";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统日志</title>
+    <style>
+         body{
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            background-image: url('back2.jpg');
+            background-size: cover;
+        }
+        .show_box:hover {
+            opacity: 1.0;
+        }
+        .show_box{
+            height: 40px;
+            width: 100px;
+            opacity: 0.75;
+        }
+
+    </style>
+</head>
+<body>
+
+    <input class="show_box" type="button" name="show_btn" id="show_btn" value="查看系统日志">
+    <script>
+        document.getElementById("show_btn").onclick=function (){
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                    
+                }
+            };
+            xhttp.open("GET", "http://47.94.233.112:9000/log/list");
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>galigali二级管理系统登录</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+            text-decoration: none;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('back1.jpg');
+            background-size: cover;
+        }
+        .login{
+            width: 550px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(
+                to right bottom,
+                rgba(255,255,255,.7),
+                rgba(255,255,255,.5),
+                rgba(255,255,255,.4)
+            );
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px #a29bfe;
+            border-radius: 15px;
+        }
+        .table{
+            font: 900 40px '';
+            text-align: center;
+            letter-spacing: 5px;
+            color: #3d3d3d;
+        }
+        .box{
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .box input{
+            width: 400px;
+            height: 100%;
+            margin-bottom: 20px;
+            outline: none;
+            border: 0;
+            padding: 10px;
+            background-color: transparent;
+            border-bottom: 3px solid rgb(150, 150, 240);
+            font: 900 16px '';
+        }
+        .inputbox{
+            text-align: center;
+        }
+        .go{
+            text-align: center;
+            display: block;
+            height: 24px;
+            padding: 12px;
+            font: 900 20px '';
+            border-radius: 100px;
+            margin: 80px;
+            margin-top: 20px;
+            color: #fff;
+            letter-spacing: 3px;
+            background-image: linear-gradient(to left,
+            #fd79a8,#a29bf6);
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <div class="box">
+            <p class="table"><br>用户登录</p>
+            <br>
+            <form action="" class="inputbox" method="post" id="userinformation">
+                <input type="text" name="username" id="username" placeholder="请输入账号">
+                <input type="password" name="password" id="password" placeholder="请输入密码">
+                <br>
+                <br>
+                <input type="button" class="go" value="登录" id="login_btn">
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById("login_btn").onclick=function (){
+            
+            var username= document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                    var flag = this.responseText
+                    if(flag == "登陆成功"){
+                        alert("登陆成功，正在为您跳转至后台")
+                        window.location.href="http://47.94.233.112/page_level2.html";
+                    }
+                }
+            };
+            xhttp.open("GET", "http://47.94.233.112:9000/user/supervise?username="+username+"&password="+password);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+@charset "utf-8";
+/* CSS Document */
+
+div{}
+ul,li,h1,h2,h3,p{ padding:0; margin:0; list-style:none}
+a{ text-decoration:none}
+html{ background:url(../images/timg.jpg)}
+body{ width:960px;  background:rgba(0,0,0,0.8); margin:0 auto; line-height:21px}
+.clear{ clear:both}
+.menu li{ list-style:none}
+.logo{ position:absolute; top:50px; width:250px; height:100px; margin-left:40px}
+.banner{ position:relative; margin-top:0px;}
+.banner img{ display:block}
+.menu{ width:100%; text-align:center; float:left; background:#c53333}
+.menu li a{ color:#fff}
+.menu li { border-radius:10px; float:left; margin:12px; font-size:18px; padding:8px 13px ; width: 135px; font-weight:bold}
+
+.right{ float:right; width:480px; padding:10px}
+.right h2{ margin:20px 0}
+.left{  float:left; width:380px; margin-left:10px; padding:10px}
+.content { padding-bottom:20px; font-size:16px; line-height:28px; clear:both; padding-top:10px; display:block ; color:#fff;}
+.more{-webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;padding:0 20px; line-height:40px; background:#c53333; color:#fff; display:inline-block; margin-top:30px}
+.end{ clear:both; background:#c53333; color:#fff; padding:30px 0; text-align:center;}
+.produce img{  margin:0 20px 20px 0}
+.produce { line-height:30px}
+.pad{ padding:20px; display:block}
+.pics p{ margin:1px; text-align:center}
+.txt{ margin:20px 100px; text-align:center}
+.imglist{ width:96%; margin:0 auto}
+.imglist li a{ color:#fff}
+.imglist li{ float:left; width:440px;  margin:10px ; margin-top:30px; text-align:center}
+.scrollleft{ margin:2%}
+.scrollleft li{ float:left; width:47.5%; margin:1%; border:#CC9900 solid 1px}
+.scrollleft li img{ float:left; margin-right:20px;}
+.news li{ padding:5px;}
+.imglist h2{ margin-top:30px; font-weight:normal; padding-bottom:30px}
+.title{ text-align:center; color:#F00; padding:10px; padding-bottom:20px; margin-bottom:20px; border-bottom:#999999 solid 1px}
+.fl{ float:left}
+.ac{ padding:0 50px}
+.ac h3{ margin:20px 0}
+.js  div{ width:100%; clear:both; margin-bottom:20px; float:left}
+.bar h2:after{ content:''; display:block; width:60px; border-bottom:#c53333 solid 3px; position:absolute; left:50%; bottom:-20px; margin-left:-30px;}
+.bar h2{ position:relative;}
+.js div img{ float:left; margin-right:20px} 
+.msg>div{ padding:10px}
+.tub { margin:0 20px}
+.tub li img{ width:100%; height:144px; display:block}
+.tub li{ width:21%; background:#111; padding:1%; margin:20px 1% ; float:left; text-align:center; color:#FFFF00}
+.tub li a{ color:#fff; font-size:18px}
+.bar{ margin:20px; clear:both; text-align:center; color:#fff; font-size:18px; font-weight:bold; padding:12px;}
+.feedback{ padding:30px; background:#a6957b;}.feedback span{ float:left;}
+.msg h4{ margin-bottom:0; font-size:18px; font-weight:normal}
+.msg{ background:rgba(0,0,0,0.6); width:400px; margin:15px auto; clear:both}
+.cls{ width:300px; margin:0 auto !important; text-align:left}
+.cls input.shu{ width:100%; outline:none; color:#fff; background:none; border:none; padding:10px 0; border-bottom:#fff solid 1px}
+.shu2{ background:#fff; border:none; padding:10px 0; width:100%}
+.img{ position:absolute; width:600px; height:400px; left:50%; top:50%; text-align:center; display:table;align-items:center; margin-left:-300px; margin-top:-200px}
+.img div{ vertical-align:middle; display:table-cell}
+.img div img{ max-width:100%; max-height:100%;}
+.photo{ position:fixed; width:100%; left:0; top:0; height:100%; z-index:55}
+.mask{ position:fixed; left:0; top:0; width:100%; background:rgba(0,0,0,.85); height:100%; z-index:44}
+
+.close{ display:inline-block; width:140px; padding:15px 0; display:inline-block; background:#c53333; color:#fff ; text-align:center; position:fixed; bottom:0; font-weight:bold; font-size:18px; margin-top:220px; left:50%; margin-left:-70px; cursor:pointer;-webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;}
+.close:hover,.more:hover{ background:#FF6600}
+
+.c-banner{
+	width: 100%;
+	position: relative;
+}
+.c-banner img{
+	width: 100%;
+}
+.c-banner .banner ul{
+	list-style: none;
+	padding-left: 0px;
+	margin-bottom: 0px;
+}
+.c-banner .banner ul li{
+	position: absolute
+	display: none;
+	opacity: 0;
+}
+.c-banner .banner ul li:nth-child(1){
+	opacity: 1;
+	display: block;
+}
+.c-banner .banner ul li img{
+	width: 100%;
+	position: absolute; height:450px;object-fit:cover;
+	top: 0px;
+}
+.c-banner .banner ul li:first-child img{
+	position: relative;
+}
+.c-banner .nexImg,.c-banner .preImg{
+	padding: 25px 10px 25px 10px;
+	position: absolute;
+	top: 50%;
+	margin-top: -53px;
+	background: #000000;
+	opacity: 0.5;
+	border-radius: 5px;
+	z-index: 10;
+	
+}
+.c-banner .nexImg:hover,.c-banner .preImg:hover{
+	opacity: 0.8;
+}
+.c-banner .nexImg{
+	right: 0px;
+}
+.c-banner .nexImg img,.c-banner .preImg img{
+	
+	
+}
+.c-banner .jumpBtn{
+	width: 100%;
+	position: absolute;
+	bottom: 20px;
+	text-align: center;
+}
+.c-banner .jumpBtn ul{
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+.c-banner .jumpBtn ul li{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: inline-block;
+	background-color: white;
+	opacity: 0.9;
+	margin-left: 10px;
+}
+.c-banner .jumpBtn ul li:first-child{
+	margin-left: 0px;
+}
+.clearfix:after{ clear:both; display:block}

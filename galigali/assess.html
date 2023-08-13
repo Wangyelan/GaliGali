@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投稿审核</title>
+    <style>
+        body{
+            background-image: url('assess.jpg');
+            background-size: cover;
+        }
+        .button_box {
+            width: 200px;
+            height: 40px;
+            background-color: rgb(247, 184, 205);
+            font-size: 20px;
+        }
+        .assess_list{
+            font-weight: bold;
+            font-size: 30px;
+            color: orange;
+        }
+        h1 {
+            text-align: left;
+            padding-top: 10px;
+            color: rgb(33, 173, 194);
+            margin-left: 50px;
+        }
+        .input_box {
+            width: 300px;
+            height: 30px;
+            width: 300px;
+            height: 40px;
+            padding-left: 10px;
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+        .button_box2 {
+            width: 300px;
+            height: 35px;
+            width: 300px;
+            height: 40px;
+            margin-top: 20px;
+            margin-left: 50px;
+            border-radius: 5px;
+            background-color: #64a9d9;
+            cursor: pointer;
+            color: #fff;
+        }
+        .shadow{
+            position:fixed;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            background-color:black;
+            opacity:0.6;
+            z-index:9;
+        }
+        .boxed-group {
+            width:500px;
+            height:400px;
+            background-color:#778899;
+            position:fixed;
+            left:50%;
+            top:50%;
+            margin-left:-250px;
+            margin-top:-200px;
+            z-index:10;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .boxed-group h3{
+            font-weight: 400;
+            margin: 0;
+        }
+        .boxed-group h3 {
+            padding: 12px 20px;
+            color: #fff;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background-color: #434a54;
+        }
+        .boxed-group .boxed-group-inner {
+            height:300px;
+            font-size: 14px;
+            font-weight: 300;
+            color: #aaa;
+            border-color: #e6e9ed;
+            background-color: #fff;
+        }
+        .btn-danger {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 3px;
+            color: #fff;
+        }
+        #cancel{
+            background-color: #c0392b;
+            border: 1px solid #ab3326;
+        }
+        #pass{
+            background-color: #C0C0C0;
+            border: 1px solid #C0C0C0;
+        }
+        #cancel:hover{
+            background-color: #ab3326;
+        }
+        #pass:hover{
+            background-color: #696969;
+        }
+        .footer{
+            text-align: center;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>待审核内容如下：</h1>
+    <h2>格式：编号在前，内容在后</h2>
+    <p id="myp"></p>
+    <script>
+        //表单打印
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("myp").innerText=this.responseText;
+            }
+        };
+        xhttp.open("GET", "http://47.94.233.112:8801/file/showChecking");
+        xhttp.send();
+
+
+    </script>
+    
+    <div class="ban_box">
+		<h1>投稿审核</h1>
+		<input class="input_box" type="text" placeholder="审核编号" id="number" name="number">
+		<input class="button_box" type="button" value="通过" id="pass">
+	</div>
+
+    <script>
+        //视频审核
+        document.getElementById("pass").onclick=function(){
+            var id=document.getElementById("number").value;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("该投稿审核通过！");
+                }
+            };
+            xhttp.open("GET", "http://47.94.233.112:8801/file/changeStatus?id="+id);
+            xhttp.send();
+        }
+    </script>
+
+</body>
+</html>

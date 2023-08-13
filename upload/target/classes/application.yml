@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 1122315
+    url: jdbc:mysql://47.94.233.112/user?useSSL=false
+server:
+  port: 8801
