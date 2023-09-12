@@ -31,7 +31,7 @@ public class FileController {
     }
 
     @CrossOrigin
-    @GetMapping("/showChecking")//展示用户信息表
+    @GetMapping("/showChecking")//展示视频信息表
     public HashMap<Integer, String> showChecking(){
         QueryWrapper<Video> videoQueryWrapper=new QueryWrapper<>();
         videoQueryWrapper.lambda().eq(Video::getStatus,"in checking");
@@ -46,7 +46,7 @@ public class FileController {
     }
 
     @CrossOrigin
-    @GetMapping("/showReady")//展示用户信息表
+    @GetMapping("/showReady")//展示已经审核通过的信息表
     public HashMap<Integer,String> showReady(){
         QueryWrapper<Video> videoQueryWrapper=new QueryWrapper<>();
         videoQueryWrapper.lambda().eq(Video::getStatus,"ready");
@@ -61,7 +61,7 @@ public class FileController {
     }
 
     @CrossOrigin
-    @GetMapping("/changeStatus")//修改用户信息表
+    @GetMapping("/changeStatus")//用于审核信息，更改信息状态
     public String changeStatus(Integer id){
         QueryWrapper<Video> videoQueryWrapper=new QueryWrapper<>();
         List<Video> temp = videoMapper.selectList(videoQueryWrapper);
