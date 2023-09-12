@@ -32,7 +32,7 @@ public class userController{
 
 
     @RequestMapping("/login")
-    public String login(String username, String password){
+    public String login(String username, String password){//核验用户登录
         Log log=new Log();
         log.setUsername(username);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -66,7 +66,7 @@ public class userController{
         }
     }
     @RequestMapping("/attend")
-    public String attend(String username,String password){
+    public String attend(String username,String password){//核验一级管理员登录
         Log log=new Log();
         log.setUsername(username);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -105,7 +105,7 @@ public class userController{
         }
     }
     @RequestMapping("/supervise")
-    public String supervise(String username,String password){
+    public String supervise(String username,String password){//核验系统管理员登录
         Log log=new Log();
         log.setUsername(username);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
