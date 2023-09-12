@@ -35,7 +35,7 @@ public class userController{
     public String login(String username, String password){//核验用户登录
         Log log=new Log();
         log.setUsername(username);
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");//规定日期格式，方便系统日志记录
         log.setCreateTime(simpleDateFormat.format(new Date()));
         QueryWrapper<User> userQueryWrapper=new QueryWrapper<>();
         userQueryWrapper.lambda().eq(User::getUsername,username);
@@ -137,7 +137,7 @@ public class userController{
         }
     }
     @RequestMapping("/enroll")
-    public String enroll(String username,String password){
+    public String enroll(String username,String password){//用户注册
         Log log=new Log();
         log.setUsername(username);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -159,7 +159,7 @@ public class userController{
         }
     }
     @RequestMapping("/block")
-    public String block(String username){
+    public String block(String username){//账号封禁
         Log log=new Log();
         log.setUsername(username);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
