@@ -17,7 +17,7 @@ public class LogController {
     @Autowired
     LogMapper logMapper;
     @GetMapping("/list")
-    public List<Log> getlist(){
+    public List<Log> getlist(){//打印用户名单
         QueryWrapper<Log> logQueryWrapper=new QueryWrapper<>();
         return logMapper.selectList(logQueryWrapper);
     }
